@@ -1,0 +1,20 @@
+<amanat>
+	<assets>
+		<asset>
+			<type>hardware</type>
+			<assetid>1</assetid>
+			<name>desktop</name>
+			<empid>123</empid>
+			<startdate>19-11-1990</startdate>
+			<enddate>19-11-2020</enddate>
+		</asset>
+		<asset>
+			<type>hardware</type>
+			<assetid>2</assetid>
+			<name>ipphone</name>
+			<empid>456</empid>
+			<startdate>19-11-1990</startdate>
+			<enddate>19-11-2020</enddate>
+		</asset>
+	</assets>
+</amanat>
