@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPARSH Dashboard</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<!-- Morris -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+<!-- Gritter -->
+<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+<link href="css/animate.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div id="wrapper">
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="sidebar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="nav-header">
+						<div class="profile-element">
+							<span class="clear"> <span class="block m-t-xs"> <strong
+									class="font-bold">Infosys Security</strong>
+							</span>
+							</span>
+						</div>
+						<div class="logo-element">SPARSH</div>
+					</li>
+					<li class="active"><a href="index.html"><i
+							class="fa fa-th-large"></i> <span class="nav-label">Security
+								Check</span> </a></li>
+				</ul>
+
+			</div>
+		</nav>
+
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row border-bottom">
+				<nav class="navbar navbar-static-top" role="navigation"
+					style="margin-bottom: 0">
+					<div class="navbar-header">
+						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary "
+							href="#"><i class="fa fa-bars"></i> </a>
+						<form role="search" class="navbar-form-custom" method="post"
+							action="#">
+							<div class="form-group">
+								<input type="text" placeholder="Search for something..."
+									class="form-control" name="top-search" id="top-search">
+							</div>
+						</form>
+					</div>
+					<ul class="nav navbar-top-links navbar-right">
+						<li><span class="m-r-sm text-muted welcome-message">Welcome
+								to Infosys Security Check.</span></li>
+						<li><a href="login.html"> <i class="fa fa-sign-out"></i>
+								Log out
+						</a></li>
+					</ul>
+
+				</nav>
+			</div>
+
+			<div class="row  border-bottom white-bg dashboard-header"></div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="wrapper wrapper-content">
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="ibox float-e-margins">
+									<div class="ibox-title">
+										<h5>Photo</h5>
+
+									</div>
+									<div class="ibox-content">
+										<div>
+											<img alt="image" class="img-circle" id="imgid">
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+							<div class="col-lg-4">
+								<div class="ibox float-e-margins">
+									<div class="ibox-title">
+										<h5>Personal Information</h5>
+										<div class="ibox-tools">
+											<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+											</a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+												<i class="fa fa-wrench"></i>
+											</a> <a class="close-link"> <i class="fa fa-times"></i>
+											</a>
+
+										</div>
+									</div>
+									<div class="ibox-content">
+										<div>
+											<strong class="font-bold">Employee
+													Id -</strong> <span id="empid"></span> <strong class="font-bold">Name
+												-</strong> <span id="nameid"></span></br> <strong class="font-bold">Email
+												Id -</strong> <span id="emailid"></span></br> <strong class="font-bold">Contact
+												No. -</strong> <span id="contactid"></span></br> <strong class="font-bold">Unit
+												-</strong> <span id="unitid"></span></br> <strong class="font-bold">Mgr
+												Email -</strong> <span id="pmmailid"></span></br>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-4">
+								<div class="ibox float-e-margins">
+									<div class="ibox-title">
+										<h5>Assets Information</h5>
+										<div class="ibox-tools">
+											<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+											</a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+												<i class="fa fa-wrench"></i>
+											</a> <a class="close-link"> <i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="ibox-content ibox-heading">
+
+										<strong class="font-bold">Asset ID -</strong>
+										<span id="assetid">asset id</span></br>
+										<strong class="font-bold">Asset Make -</strong>
+										<span id="assetmakeid">make id</span></br>
+										<strong class="font-bold">Asset Name -</strong>
+										<span id="assetnameid"></span>
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Mainly scripts -->
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+	<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+	<!-- Flot -->
+	<script src="js/plugins/flot/jquery.flot.js"></script>
+	<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+	<script src="js/plugins/flot/jquery.flot.spline.js"></script>
+	<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+	<script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+	<!-- Peity -->
+	<script src="js/plugins/peity/jquery.peity.min.js"></script>
+	<script src="js/demo/peity-demo.js"></script>
+
+	<!-- Custom and plugin javascript -->
+	<script src="js/inspinia.js"></script>
+	<script src="js/plugins/pace/pace.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+	<!-- GITTER -->
+	<script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+	<!-- EayPIE -->
+	<script src="js/plugins/easypiechart/jquery.easypiechart.js"></script>
+
+	<!-- Sparkline -->
+	<script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+	<!-- Sparkline demo data  -->
+	<script src="js/demo/sparkline-demo.js"></script>
+
+	<!-- ChartJS-->
+	<script src="js/plugins/chartJs/Chart.min.js"></script>
+
+	<script src="loadxmldoc.js"></script>
+
+	<script>
+		var getLocation = window.location.href;
+
+		var lastSegment = getLocation.substr(getLocation.lastIndexOf('?') + 1);
+		;
+		var oXHR = window.XMLHttpRequest ? new XMLHttpRequest()
+				: new ActiveXObject('Microsoft.XMLHTTP');
+		function reportStatus() {
+			if (oXHR.readyState == 4) // REQUEST COMPLETED.
+				showTheList(this.responseXML); // ALL SET. NOW SHOW XML DATA.
+		}
+
+		oXHR.onreadystatechange = reportStatus;
+
+		oXHR.open("GET", "harmonyXML.xml", true);
+		// true = ASYNCHRONOUS REQUEST (DESIRABLE), false = SYNCHRONOUS REQUEST.
+		oXHR.send();
+
+		function showTheList(xml) {
+			var xmlDoc = loadXMLDoc("amanatXML.xml");
+
+			var divBooks1 = document.getElementById('books1'); // THE PARENT DIV.
+			var Book_List1 = xmlDoc.getElementsByTagName('asset'); // THE XML TAG NAME.
+			var empId = null;
+			for (var i = 0; i < Book_List1.length; i++) {
+
+				// CREATE CHILD DIVS INSIDE THE PARENT DIV.
+				var divLeft = document.createElement('div');
+				divLeft.className = 'col1';
+				divLeft.innerHTML = Book_List1[i]
+						.getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
+
+				var divRight = document.createElement('div');
+				divRight.className = 'col2';
+				divRight.innerHTML = Book_List1[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+				// ADD THE CHILD TO THE PARENT DIV.
+				if (Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue == lastSegment) {
+					empId = Book_List1[i].getElementsByTagName("empid")[0].childNodes[0].nodeValue;
+					document.getElementById('assetid').innerHTML = Book_List1[i]
+							.getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
+					//document.getElementById('assetmakeid').innerHTML =  Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
+					document.getElementById('assetnameid').innerHTML = Book_List1[i]
+							.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+				}
+
+			}
+
+			if (empId == null) {
+				window.location = "404.html"
+			}
+			var divBooks = document.getElementById('books'); // THE PARENT DIV.
+			var Book_List = xml.getElementsByTagName('Employee'); // THE XML TAG NAME.
+			var empName = null;
+			var empPhone = null;
+			var empEmailId = null;
+			var empUnit = null;
+			var empPmMail = null;
+			for (var i = 0; i < Book_List.length; i++) {
+
+				// CREATE CHILD DIVS INSIDE THE PARENT DIV.
+				/*   var divLeft = document.createElement('div');
+				 // divLeft.className = 'col1';
+				  divLeft.innerHTML = Book_List[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+
+				  var divRight = document.createElement('div');
+				 // divRight.className = 'col2';
+				  divRight.innerHTML = Book_List[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+				  
+				  var elem = document.createElement("imgid"); */
+
+				// ADD THE CHILD TO THE PARENT DIV.
+				if (Book_List[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == empId) {
+					document.getElementById('imgid').src = Book_List[i]
+							.getElementsByTagName("pic")[0].childNodes[0].nodeValue;
+
+					document.getElementById('empid').innerHTML = Book_List[i]
+							.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+					document.getElementById('nameid').innerHTML = Book_List[i]
+							.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+					document.getElementById('emailid').innerHTML = Book_List[i]
+							.getElementsByTagName("email")[0].childNodes[0].nodeValue;
+					//document.getElementById('contactid').src = Book_List[i].getElementsByTagName("pmemail")[0].childNodes[0].nodeValue;
+					//document.getElementById('unitid').src = Book_List[i].getElementsByTagName("pic")[0].childNodes[0].nodeValue;
+					document.getElementById('pmmailid').innerHTML = Book_List[i]
+							.getElementsByTagName("pmemail")[0].childNodes[0].nodeValue;
+
+				}
+			}
+		};
+	</script>
+
+</body>
+</html>
