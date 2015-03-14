@@ -216,9 +216,11 @@
 	    });
 	});
 	
-	
-	
-
+	var finalCurrentDate = new Date();
+	var dd= finalCurrentDate.getDate();
+	var mm= finalCurrentDate.getMonth()+1;
+	var yyyy=finalCurrentDate.getFullYear();
+	finalCurrentDate = dd+"/"+mm+"/"+yyyy;
 
 		document.getElementById("sendmail").style.visibility = "hidden";
 		document.getElementById("success").style.visibility = "hidden";
