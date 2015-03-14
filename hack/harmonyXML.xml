@@ -9,6 +9,8 @@
 				<line1>51 pune</line1>
 				<line2>440011</line2>
 			</address>
+			<email>a_b@infosys.com</email>
+			<pmemail>p_m@infosys.com</pmemail>
 		</Employee>
 		<Employee>
 			<id>123</id>
@@ -19,6 +21,8 @@
 				<line1>51 nagpur</line1>
 				<line2>440011</line2>
 			</address>
+			<email>a_b@infosys.com</email>
+			<pmemail>p_m@infosys.com</pmemail>
 		</Employee>
 		<Employee>
 			<id>1</id>
@@ -29,5 +33,7 @@
 				<line1>51 mumbai</line1>
 				<line2>440402</line2>
 			</address>
+			<email>a_b@infosys.com</email>
+			<pmemail>p_m@infosys.com</pmemail>
 		</Employee>
 </harmony>
