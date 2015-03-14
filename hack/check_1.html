@@ -1,0 +1,87 @@
+<body>
+    <div id="books"></div>
+    <script src="loadxmldoc.js"> 
+</script>
+    <script type="text/javascript">
+    var getLocation = window.location.href;
+
+    var lastSegment = getLocation.substr(getLocation.lastIndexOf('?') + 1);;
+    var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        function reportStatus() {
+            if (oXHR.readyState == 4)               // REQUEST COMPLETED.
+                showTheList(this.responseXML);      // ALL SET. NOW SHOW XML DATA.
+        }
+
+        oXHR.onreadystatechange = reportStatus;
+        
+        oXHR.open("GET", "harmonyXML.xml", true);      
+                    // true = ASYNCHRONOUS REQUEST (DESIRABLE), false = SYNCHRONOUS REQUEST.
+        oXHR.send();
+
+ 	
+        function showTheList(xml) {
+			alert("yay");
+			var xmlDoc=loadXMLDoc("amanatXML.xml");
+			
+			var divBooks1 = document.getElementById('books1');        // THE PARENT DIV.
+            var Book_List1 = xmlDoc.getElementsByTagName('asset');       // THE XML TAG NAME.
+			var empId = null ;
+            for (var i = 0; i < Book_List1.length; i++) {
+
+                // CREATE CHILD DIVS INSIDE THE PARENT DIV.
+                var divLeft = document.createElement('div');
+                divLeft.className = 'col1';
+                divLeft.innerHTML = Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
+
+                var divRight = document.createElement('div');
+                divRight.className = 'col2';
+                divRight.innerHTML = Book_List1[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+                
+                // ADD THE CHILD TO THE PARENT DIV.
+                if(Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue==lastSegment)
+                {
+                	empId=Book_List1[i].getElementsByTagName("empid")[0].childNodes[0].nodeValue;
+                }
+               
+            }
+			
+			if(empId==null)
+				{
+					window.location = "404.html"
+				}
+            var divBooks = document.getElementById('books');        // THE PARENT DIV.
+            var Book_List = xml.getElementsByTagName('Employee');       // THE XML TAG NAME.
+
+            for (var i = 0; i < Book_List.length; i++) {
+
+                // CREATE CHILD DIVS INSIDE THE PARENT DIV.
+                var divLeft = document.createElement('div');
+                divLeft.className = 'col1';
+                divLeft.innerHTML = Book_List[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
+
+                var divRight = document.createElement('div');
+                divRight.className = 'col2';
+                divRight.innerHTML = Book_List[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+                
+                var elem = document.createElement("img");
+                
+                elem.setAttribute("height", "76");
+                elem.setAttribute("width", "102");
+                elem.setAttribute("alt", "Flower");
+                
+                // ADD THE CHILD TO THE PARENT DIV.
+                if(Book_List[i].getElementsByTagName("id")[0].childNodes[0].nodeValue==empId)
+                {
+                	elem.setAttribute("src", Book_List[i].getElementsByTagName("pic")[0].childNodes[0].nodeValue);
+		                divBooks.appendChild(divLeft);
+		                divBooks.appendChild(divRight);
+		                divBooks.appendChild(elem);
+                }
+            }
+        };
+
+    </script>
+</body>
+</html>

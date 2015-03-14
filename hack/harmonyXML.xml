@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<harmony>
+		<Employee>
+			<id>456</id>
+			<name>abc</name>
+			<pic>1.jpg</pic>
+			<blood>A+</blood>
+			<address>
+				<line1>51 pune</line1>
+				<line2>440011</line2>
+			</address>
+		</Employee>
+		<Employee>
+			<id>123</id>
+			<name>xyz</name>
+			<pic>2.jpg</pic>
+			<blood>B+</blood>
+			<address>
+				<line1>51 nagpur</line1>
+				<line2>440011</line2>
+			</address>
+		</Employee>
+		<Employee>
+			<id>1</id>
+			<name>lmn</name>
+			<pic>3.jpg</pic>
+			<blood>AB+</blood>
+			<address>
+				<line1>51 mumbai</line1>
+				<line2>440402</line2>
+			</address>
+		</Employee>
+</harmony>
