@@ -140,9 +140,12 @@
 										<span id="assetmakeid">make id</span></br>
 										<strong class="font-bold">Asset Name -</strong>
 										<span id="assetnameid"></span>
-
+										<button id="sendmail" class="btn btn-primary btn-block m-t">
+											<i class="fa fa-arrow-down"></i>Send Expiry Reminder
+										</button>
 									</div>
 								</div>
+
 							</div>
 
 						</div>
@@ -216,10 +219,10 @@
 	
 	
 
-		
+
+		document.getElementById("sendmail").style.visibility = "hidden";
 		document.getElementById("success").style.visibility = "hidden";
-		
-		
+
 		var oXHR = window.XMLHttpRequest ? new XMLHttpRequest()
 				: new ActiveXObject('Microsoft.XMLHTTP');
 		function reportStatus() {
@@ -259,6 +262,50 @@
 					//document.getElementById('assetmakeid').innerHTML =  Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
 					document.getElementById('assetnameid').innerHTML = Book_List1[i]
 							.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+					finalCurrentDate = finalCurrentDate.split('/');
+					var finalEndDate = Book_List1[i]
+							.getElementsByTagName('enddate')[0].childNodes[0].nodeValue;
+					finalEndDate = finalEndDate.split('-');
+					console.log("date current" + finalCurrentDate[0]);
+					console.log("date end" + finalEndDate[0]);
+					if (finalCurrentDate[2] <= finalEndDate[2]) {
+						if (finalCurrentDate[1] <= finalEndDate[1]) {
+							if (finalCurrentDate[0] < finalEndDate[0]) {
+								console.log("date is ok");
+							
+							} else if (finalCurrentDate[0] == finalEndDate[0]) {
+								 document.getElementById('success').style.visibility = "visible";
+									document.getElementById('sendmail').style.visibility = "visible";
+									document.getElementById('success').innerHTML = "Today is the last date";
+									document.getElementById('success').className = 'alert alert-danger'; 
+								console.log("last date");
+							}
+							else{
+								 document.getElementById('success').style.visibility = "visible";
+									document.getElementById('sendmail').style.visibility = "visible";
+									document.getElementById('success').innerHTML = "Date has been Expired.";
+									document.getElementById('success').className = 'alert alert-danger'; 
+								console.log("date is expired day");
+							}
+						}
+						else {
+							 document.getElementById('success').style.visibility = "visible";
+								document.getElementById('sendmail').style.visibility = "visible";
+								document.getElementById('success').innerHTML = "Date has been Expired.";
+								document.getElementById('success').className = 'alert alert-danger'; 
+							console.log("date is expired month");
+						}
+					} 
+					else {
+						 document.getElementById('success').style.visibility = "visible";
+							document.getElementById('sendmail').style.visibility = "visible";
+							document.getElementById('success').innerHTML = "Date has been Expired.";
+							document.getElementById('success').className = 'alert alert-danger'; 
+						console.log("date is expired year");
+					}/* else {
+										console.log("current date is less than expiry ");
+									} */
+
 				}
 
 			}
@@ -267,7 +314,7 @@
 				document.getElementById("success").style.visibility = "visible";
 				document.getElementById("row1").style.visibility = "hidden";
 				document.getElementById('success').innerHTML = "Heads up! This alert needs your attention, but it's not super important. "
-					document.getElementById('success').className  = 'alert alert-danger';
+				document.getElementById('success').className = 'alert alert-danger';
 			}
 			var divBooks = document.getElementById('books'); // THE PARENT DIV.
 			var Book_List = xml.getElementsByTagName('Employee'); // THE XML TAG NAME.
@@ -276,6 +323,10 @@
 			var empEmailId = null;
 			var empUnit = null;
 			var empPmMail = null;
+
+			var startDate;
+			var endDate;
+
 			for (var i = 0; i < Book_List.length; i++) {
 
 				// CREATE CHILD DIVS INSIDE THE PARENT DIV.
