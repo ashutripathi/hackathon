@@ -1,0 +1,34 @@
+<harmony>
+	<Employees>
+		<Employee>
+			<id>1</id>
+			<name>abc</name>
+			<pic>zxxccxz/zxcxzc/xcxc/</pic>
+			<blood>A+</blood>
+			<address>
+				<line1>51 pune</line1>
+				<line2>440011</line2>
+			</address>
+		</Employee>
+		<Employee>
+			<id>2</id>
+			<name>xyz</name>
+			<pic>zxxccxz/zxcxzc/xcxc/</pic>
+			<blood>B+</blood>
+			<address>
+				<line1>51 nagpur</line1>
+				<line2>440011</line2>
+			</address>
+		</Employee>
+		<Employee>
+			<id>3</id>
+			<name>lmn</name>
+			<pic>zxxccxz/zxcxzc/xcxc/</pic>
+			<blood>AB+</blood>
+			<address>
+				<line1>51 mumbai</line1>
+				<line2>440402</line2>
+			</address>
+		</Employee>
+	<Employees>
+</harmony>
