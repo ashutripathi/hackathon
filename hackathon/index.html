@@ -69,8 +69,11 @@
 				</nav>
 			</div>
 
-			<div class="row  border-bottom white-bg dashboard-header"></div>
-			<div class="row">
+			<div class="row  border-bottom white-bg dashboard-header"> 
+			<div class="alert alert-success" role="alert" id="success">Well done! You successfully read this important alert message. </div>
+		
+			</div>
+			<div class="row" id="row1">
 				<div class="col-lg-12">
 					<div class="wrapper wrapper-content">
 						<div class="row">
@@ -197,7 +200,10 @@
 		var getLocation = window.location.href;
 
 		var lastSegment = getLocation.substr(getLocation.lastIndexOf('?') + 1);
-		;
+		
+		document.getElementById("success").style.visibility = "hidden";
+		
+		
 		var oXHR = window.XMLHttpRequest ? new XMLHttpRequest()
 				: new ActiveXObject('Microsoft.XMLHTTP');
 		function reportStatus() {
@@ -242,7 +248,10 @@
 			}
 
 			if (empId == null) {
-				window.location = "404.html"
+				document.getElementById("success").style.visibility = "visible";
+				document.getElementById("row1").style.visibility = "hidden";
+				document.getElementById('success').innerHTML = "Heads up! This alert needs your attention, but it's not super important. "
+					document.getElementById('success').className  = 'alert alert-danger';
 			}
 			var divBooks = document.getElementById('books'); // THE PARENT DIV.
 			var Book_List = xml.getElementsByTagName('Employee'); // THE XML TAG NAME.
@@ -267,6 +276,7 @@
 
 				// ADD THE CHILD TO THE PARENT DIV.
 				if (Book_List[i].getElementsByTagName("id")[0].childNodes[0].nodeValue == empId) {
+					document.getElementById("success").style.visibility = "visible";
 					document.getElementById('imgid').src = Book_List[i]
 							.getElementsByTagName("pic")[0].childNodes[0].nodeValue;
 
