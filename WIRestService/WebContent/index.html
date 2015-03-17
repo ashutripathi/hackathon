@@ -70,21 +70,21 @@
 			</div>
 
 			<div class="row  border-bottom white-bg dashboard-header"> 
-			<strong class="font-bold"><div class="alert alert-success" role="alert" id="success">Thank You! Asset Holder Details are Below. </div></strong>
+			<div class="alert alert-success" role="alert" id="success">Well done! You successfully read this important alert message. </div>
 		
 			</div>
 			<div class="row" id="row1">
 				<div class="col-lg-12">
 					<div class="wrapper wrapper-content">
 						<div class="row">
-							<div class="col-lg-3">
+							<div class="col-lg-4">
 								<div class="ibox float-e-margins">
 									<div class="ibox-title">
 										<h5>Photo</h5>
 
 									</div>
 									<div class="ibox-content">
-										<div >
+										<div>
 											<img alt="image" class="img-circle" id="imgid">
 										</div>
 
@@ -140,12 +140,9 @@
 										<span id="assetmakeid">make id</span></br>
 										<strong class="font-bold">Asset Name -</strong>
 										<span id="assetnameid"></span>
-										<button id="sendmail" class="btn btn-primary btn-block m-t">
-											<i class="fa fa-arrow-down"></i>Send Expiry Reminder
-										</button>
+
 									</div>
 								</div>
-
 							</div>
 
 						</div>
@@ -200,11 +197,12 @@
 	<script src="loadxmldoc.js"></script>
 
 	<script>
+	
 	var empId = null;
 	var getLocation = window.location.href;
 	var lastSegment = getLocation.substr(getLocation.lastIndexOf('?') + 1);
 	var temp="id="+lastSegment;
-	$(document).ready(function() {
+	 $(document).ready(function() {
 	    $.ajax({
 	    	  type: "GET",
 	    	   data: temp,
@@ -214,17 +212,19 @@
 	    	empId = data.empId;
 	    
 	    });
+	   
+        }
 	});
+	 
 	
-	var finalCurrentDate = new Date();
-	var dd= finalCurrentDate.getDate();
-	var mm= finalCurrentDate.getMonth()+1;
-	var yyyy=finalCurrentDate.getFullYear();
-	finalCurrentDate = dd+"/"+mm+"/"+yyyy;
+	 
+	
+	
 
-		document.getElementById("sendmail").style.visibility = "hidden";
+		
 		document.getElementById("success").style.visibility = "hidden";
-
+		
+		
 		var oXHR = window.XMLHttpRequest ? new XMLHttpRequest()
 				: new ActiveXObject('Microsoft.XMLHTTP');
 		function reportStatus() {
@@ -243,7 +243,7 @@
 
 			var divBooks1 = document.getElementById('books1'); // THE PARENT DIV.
 			var Book_List1 = xmlDoc.getElementsByTagName('asset'); // THE XML TAG NAME.
-			var empId = null;
+			//var empId = null;
 			for (var i = 0; i < Book_List1.length; i++) {
 
 				// CREATE CHILD DIVS INSIDE THE PARENT DIV.
@@ -258,65 +258,21 @@
 
 				// ADD THE CHILD TO THE PARENT DIV.
 				if (Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue == lastSegment) {
-					empId = Book_List1[i].getElementsByTagName("empid")[0].childNodes[0].nodeValue;
+					//empId = Book_List1[i].getElementsByTagName("empid")[0].childNodes[0].nodeValue;
 					document.getElementById('assetid').innerHTML = Book_List1[i]
 							.getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
 					//document.getElementById('assetmakeid').innerHTML =  Book_List1[i].getElementsByTagName("assetid")[0].childNodes[0].nodeValue;
 					document.getElementById('assetnameid').innerHTML = Book_List1[i]
 							.getElementsByTagName("name")[0].childNodes[0].nodeValue;
-					finalCurrentDate = finalCurrentDate.split('/');
-					var finalEndDate = Book_List1[i]
-							.getElementsByTagName('enddate')[0].childNodes[0].nodeValue;
-					finalEndDate = finalEndDate.split('-');
-					console.log("date current" + finalCurrentDate[0]);
-					console.log("date end" + finalEndDate[0]);
-					if (finalCurrentDate[2] <= finalEndDate[2]) {
-						if (finalCurrentDate[1] <= finalEndDate[1]) {
-							if (finalCurrentDate[0] < finalEndDate[0]) {
-								console.log("date is ok");
-							
-							} else if (finalCurrentDate[0] == finalEndDate[0]) {
-								 document.getElementById('success').style.visibility = "visible";
-									document.getElementById('sendmail').style.visibility = "visible";
-									document.getElementById('success').innerHTML = "Asset Validity has been Expired.";
-									document.getElementById('success').className = 'alert alert-danger'; 
-								console.log("last date");
-							}
-							else{
-								 document.getElementById('success').style.visibility = "visible";
-									document.getElementById('sendmail').style.visibility = "visible";
-									document.getElementById('success').innerHTML = "Asset Validity has been Expired.";
-									document.getElementById('success').className = 'alert alert-danger'; 
-								console.log("date is expired day");
-							}
-						}
-						else {
-							 document.getElementById('success').style.visibility = "visible";
-								document.getElementById('sendmail').style.visibility = "visible";
-								document.getElementById('success').innerHTML = "Asset Validity has been Expired.";
-								document.getElementById('success').className = 'alert alert-danger'; 
-							console.log("date is expired month");
-						}
-					} 
-					else {
-						 document.getElementById('success').style.visibility = "visible";
-							document.getElementById('sendmail').style.visibility = "visible";
-							document.getElementById('success').innerHTML = "Asset Validity has been Expired.";
-							document.getElementById('success').className = 'alert alert-danger'; 
-						console.log("date is expired year");
-					}/* else {
-										console.log("current date is less than expiry ");
-									} */
-
 				}
 
 			}
-
+			
 			if (empId == null) {
 				document.getElementById("success").style.visibility = "visible";
 				document.getElementById("row1").style.visibility = "hidden";
-				document.getElementById('success').innerHTML = "Asset is not valid. "
-				document.getElementById('success').className = 'alert alert-danger';
+				document.getElementById('success').innerHTML = "Heads up! This alert needs your attention, but it's not super important. "
+					document.getElementById('success').className  = 'alert alert-danger';
 			}
 			var divBooks = document.getElementById('books'); // THE PARENT DIV.
 			var Book_List = xml.getElementsByTagName('Employee'); // THE XML TAG NAME.
@@ -325,10 +281,6 @@
 			var empEmailId = null;
 			var empUnit = null;
 			var empPmMail = null;
-
-			var startDate;
-			var endDate;
-
 			for (var i = 0; i < Book_List.length; i++) {
 
 				// CREATE CHILD DIVS INSIDE THE PARENT DIV.
@@ -355,8 +307,8 @@
 							.getElementsByTagName("name")[0].childNodes[0].nodeValue;
 					document.getElementById('emailid').innerHTML = Book_List[i]
 							.getElementsByTagName("email")[0].childNodes[0].nodeValue;
-					document.getElementById('contactid').innerHTML = Book_List[i].getElementsByTagName("contact")[0].childNodes[0].nodeValue;
-					document.getElementById('unitid').innerHTML = Book_List[i].getElementsByTagName("unit")[0].childNodes[0].nodeValue;
+					//document.getElementById('contactid').src = Book_List[i].getElementsByTagName("pmemail")[0].childNodes[0].nodeValue;
+					//document.getElementById('unitid').src = Book_List[i].getElementsByTagName("pic")[0].childNodes[0].nodeValue;
 					document.getElementById('pmmailid').innerHTML = Book_List[i]
 							.getElementsByTagName("pmemail")[0].childNodes[0].nodeValue;
 
@@ -367,3 +319,4 @@
 
 </body>
 </html>
+
